@@ -21,6 +21,7 @@ before_install:
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
   - docker-compose --version
+  - cat $HOME/.docker/config.json
 
 install:
   - docker-compose up --build -d
@@ -31,12 +32,3 @@ script:
   - docker images angular6-flask-skeleton_backend
 
 after_success:
-  - if [ "$TRAVIS_BRANCH" == "master" ]; then
-      echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin;
-
-      docker tag angular6-flask-skeleton_backend tiagoreichert/angular6-flask-skeleton_backend;
-      docker push tiagoreichert/angular6-flask-skeleton_backend;
-
-      docker tag angular6-flask-skeleton_frontend tiagoreichert/angular6-flask-skeleton_frontend;
-      docker push tiagoreichert/angular6-flask-skeleton_frontend;
-    fi
