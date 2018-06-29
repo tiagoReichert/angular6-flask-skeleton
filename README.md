@@ -4,8 +4,8 @@
 
 This is an base project that can be used to create your applications using Angular 6 (created using Angular-CLI) and Python Flask built with separated Docker containers.
 
-#### Testing the Stack
-If you want to test this stack you can use following docker-compose configuration:
+## Testing the Stack
+To test this stack you can use the following docker-compose configuration:
 
 ```yaml
 version: '3'
@@ -55,7 +55,7 @@ Now you should be able to open the aplication with [`http://localhost`](http://l
  on your browser.
 
 
-#### Using this GitHub project as base project:
+## Using this skeleton as base development project:
 The idea of this project is to be used as base for your own project,
 for that do following steps:
 
