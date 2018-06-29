@@ -9,7 +9,7 @@ export class DataService {
   constructor(private http: HttpClient) { }
 
   getUsers() {
-    return this.http.get('http://backend:5000/users')
+    return this.http.get('/api/users')
   }
 
 }

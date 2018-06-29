@@ -16,11 +16,10 @@ def create_app(object_name):
 
     app.config.from_object(object_name)
 
-
     # initialize SQLAlchemy
     db.init_app(app)
 
     # register our blueprints
-    app.register_blueprint(main)
+    app.register_blueprint(main, url_prefix='/api')
 
     return app
