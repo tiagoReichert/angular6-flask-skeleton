@@ -7,4 +7,3 @@ psycopg2
 SQLAlchemy==1.0.13
 pycrypto==2.6.1
 flask-cloudy
-ansible==2.1.0.0
