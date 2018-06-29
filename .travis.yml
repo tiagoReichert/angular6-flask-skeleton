@@ -19,7 +19,7 @@ before_install:
   - docker-compose --version
 
 install:
-  - docker-compose up --build
+  - docker-compose up --build -d
   - docker exec -it angular6-flask-skeleton_backend_1 python main.py createdb
 
 script:
