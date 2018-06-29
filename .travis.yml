@@ -12,8 +12,7 @@ services:
 before_install:
   - docker --version
   - sudo apt-get update
-  - sudo apt-get remove -y docker docker-engine docker.io docker-ce
-  - sudo apt-get install -y docker-ce
+  - sudo apt-get install -o Dpkg::Options::="--force-confold" --force-yes -y docker-ce
   - docker --version
 
   - docker-compose --version
@@ -22,7 +21,6 @@ before_install:
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
   - docker-compose --version
-  - sudo cat /root/.docker/config.json
 
 install:
   - docker-compose up --build -d
@@ -33,3 +31,12 @@ script:
   - docker images angular6-flask-skeleton_backend
 
 after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+      echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin;
+
+      docker tag angular6-flask-skeleton_backend tiagoreichert/angular6-flask-skeleton_backend;
+      docker push tiagoreichert/angular6-flask-skeleton_backend;
+
+      docker tag angular6-flask-skeleton_frontend tiagoreichert/angular6-flask-skeleton_frontend;
+      docker push tiagoreichert/angular6-flask-skeleton_frontend;
+    fi
