@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  frontend:
+    restart: always
+    image: tiagoreichert/angular6-flask-skeleton_frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - 'backend'
+  backend:
+    restart: always
+    image: tiagoreichert/angular6-flask-skeleton_backend
+    command: 'python main.py runserver'
+    depends_on:
+      - 'postgres'
+  postgres:
+    restart: always
+    image: postgres:9.6
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    volumes:
+      - postgresql:/var/lib/postgresql
+volumes:
+  postgresql:
+    driver: local
