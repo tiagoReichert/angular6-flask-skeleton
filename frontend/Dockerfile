@@ -1,7 +1,6 @@
-LABEL maintainer "tiago@reichert.eti.br"
-
 # Stage 0, based on Node.js, to build and compile Angular
 FROM node:10.4.1 as build
+LABEL maintainer "tiago@reichert.eti.br"
 WORKDIR /app
 COPY ./ /app/
 RUN npm install
