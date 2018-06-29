@@ -2,6 +2,10 @@ os: linux
 env:
   DOCKER_COMPOSE_VERSION: 1.21.2
 
+language: python
+python:
+  - 2.7
+
 services:
   - docker
 
@@ -20,8 +24,19 @@ before_install:
 
 install:
   - docker-compose up --build -d
-  - docker ps
-  - docker exec -it angular6-flask-skeleton_backend_1 python main.py createdb
 
 script:
   - docker ps
+  - docker images angular6-flask-skeleton_frontend
+  - docker images angular6-flask-skeleton_backend
+
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+      echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin;
+
+      docker tag angular6-flask-skeleton_backend tiagoreichert/angular6-flask-skeleton_backend;
+      docker push tiagoreichert/angular6-flask-skeleton_backend;
+
+      docker tag angular6-flask-skeleton_frontend tiagoreichert/angular6-flask-skeleton_frontend;
+      docker push tiagoreichert/angular6-flask-skeleton_frontend;
+    fi
