@@ -18,10 +18,9 @@ services:
     restart: always
     image: postgres:10.4
     environment:
-      - DEBUG=false
-      - DB_USER=postgres
-      - DB_PASS=postgres
-      - DB_NAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
     volumes:
       - postgresql:/var/lib/postgresql
 volumes:
