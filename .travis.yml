@@ -22,7 +22,7 @@ before_install:
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
   - docker-compose --version
-  - cat $HOME/.docker/config.json
+  - sudo cat /root/.docker/config.json
 
 install:
   - docker-compose up --build -d
