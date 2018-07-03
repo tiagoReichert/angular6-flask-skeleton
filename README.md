@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/tiagoReichert/angular6-flask-skeleton.svg?branch=master)](https://travis-ci.org/tiagoReichert/angular6-flask-skeleton)
 
-This is an base project that can be used to create your applications using Angular 6 (created using Angular-CLI) and Python Flask built with separated Docker containers.
+This is a base project that can be used to create your applications using Angular 6 (created using Angular-CLI) and Python Flask built with separated Docker containers.
 
 ## Testing the Stack
 To test this stack you can use the following docker-compose configuration:
