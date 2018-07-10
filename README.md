@@ -5,12 +5,11 @@
 This is a base project that can be used to create your applications using Angular 6 (created using Angular-CLI) and Python Flask built with separated Docker containers.
 
 ## Testing the Stack
-To test this stack you can use the following docker-compose configuration:
-
-### Requirements:
+#### Requirements:
 - Docker (https://docs.docker.com/install/linux/docker-ce/centos/)
 - Docker Compose (https://docs.docker.com/compose/install/#install-compose)
 
+To test this stack you can use the following docker-compose configuration:
 ```yaml
 version: '3'
 
